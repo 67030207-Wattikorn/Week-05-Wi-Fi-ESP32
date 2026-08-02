@@ -1,4 +1,4 @@
-# Week 04: Wi-Fi ESP32 Connection Architecture
+# Week 05: Wi-Fi ESP32 Connection Architecture
 
 ## 1. เทคโนโลยี Network สำหรับงาน IoT (IoT Network Technologies)
 
@@ -54,11 +54,9 @@
 |                                                                  |                                                           | **PSK / PMK / PTK / GTK** - คีย์และรหัสผ่านเข้ารหัสลับ  |
 |                                                                  |                                                           | **IP Address** - หมายเลขประจำเครื่องในระดับ Layer 3     |
 
-
-
 ---
 
-## 2. แผนผังบทเรียนสัปดาห์ที่ 4 (Lesson Roadmap)
+## 2. เนื้อหาสัปดาห์ที่ 5 (Lesson Roadmap)
 
 เนื้อหาการเรียนรู้ในสัปดาห์นี้จะเจาะลึกกระบวนการทำงานเบื้องหลังของ ESP32 ขณะสถาปนาการเชื่อมต่อ Wi-Fi ตั้งแต่เริ่มต้นจนได้ IP Address โดยแบ่งออกเป็น 5 บทเรียนหลัก
 
@@ -68,3 +66,19 @@
 4. **[04-3-Association Phase.md](04-3-Association%20Phase.md)** - เฟสที่ 3: Association Phase (การผูกสัมพันธ์และการตกลงคุณสมบัติ)
 5. **[05-4-Four-way Handshake Phase.md](05-4-Four-way%20Handshake%20Phase.md)** - เฟสที่ 4: Four-way Handshake Phase (การแลกเปลี่ยนคีย์ความปลอดภัย WPA2/WPA3 & การรับ IP Address)
 6. **[06-Glossary.md](06-Glossary.md)** - อภิธานศัพท์ คำย่อ และนิยามทางเทคนิค (Glossary of Terms)
+
+---
+## 3. ใบงานสัปดาห์ที่ 5
+
+ใบงานในสัปดาห์ที่ 5 จะช่วยให้นักศึกษาได้เข้าใจถึงขั้นตอนในการเชื่อมต่อ Wi-Fi ของ ESP32 (หรืออุปกรณ์ Microcontroller อื่นๆ) กับ Access Point (Router) โดยจะมีการอธิบายทั้งในส่วนของทฤษฎีและปฏิบัติการ โดยแบ่งออกเป็น 4 ใบงานย่อย ดังนี้
+
+1. **[07-Labsheet-05-1-Wi-Fi-Scan-Phase.md](07-Labsheet-05-1-Wi-Fi-Scan-Phase.md)** - ใบงานที่ 5.1: การเชื่อมต่อ Wi-Fi และการค้นหาสัญญาณรอบข้าง (Wi-Fi Connection and Scanning)
+2. **[08-Labsheet-05-2-Wi-Fi-Auth-Phase.md](08-Labsheet-05-2-Wi-Fi-Auth-Phase.md)** - ใบงานที่ 5.2: การเชื่อมต่อ Wi-Fi (Wi-Fi Authentication Phase)
+3. **[09-Labsheet-05-3-Wi-Fi-Assoc-Phase.md](09-Labsheet-05-3-Wi-Fi-Assoc-Phase.md)** - ใบงานที่ 5.3: การเชื่อมต่อ Wi-Fi (Wi-Fi Association Phase)
+4. **[10-Labsheet-05-4-Wi-Fi-Handshake-IP-Phase.md](10-Labsheet-05-4-Wi-Fi-Handshake-IP-Phase.md)** - ใบงานที่ 5.4: การเชื่อมต่อ Wi-Fi (Wi-Fi Handshake and IP Address Acquisition Phase)
+
+---
+
+ปรับปรุงล่าสุด 3 สิงหาคม 2569
+
+--- 

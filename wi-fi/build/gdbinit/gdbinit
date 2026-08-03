@@ -1,0 +1,2 @@
+source /Users/cheen/Week-05-Wi-Fi-ESP32/wi-fi/build/gdbinit/symbols
+source /Users/cheen/Week-05-Wi-Fi-ESP32/wi-fi/build/gdbinit/connect

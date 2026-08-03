@@ -1,1 +1,10 @@
-{}
+{
+  "idf.currentSetup": "/Users/cheen/esp/v5.5.1/esp-idf",
+  "idf.customExtraVars": {},
+  "clangd.path": "/Users/cheen/.espressif/tools/esp-clang/esp-19.1.2_20250312/esp-clang/bin/clangd",
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=**",
+    "--compile-commands-dir=/Users/cheen/Week-05-Wi-Fi-ESP32/build"
+  ]
+}

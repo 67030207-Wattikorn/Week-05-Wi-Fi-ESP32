@@ -346,10 +346,13 @@ void app_main(void) {
 ## 7. คำถามท้ายการทดลอง (Post-Lab Questions)
 
 1. เหตุใดกระบวนการ **4-Way Handshake** จึงพิสูจน์ทราบรหัสผ่าน Wi-Fi ได้โดยไม่ต้องส่งรหัสผ่าน (Passphrase) ลอยไปในอากาศเลยแม้แต่แพ็กเกจเดียว?
-2. อธิบายบทบาทและที่มาของคีย์ **PMK (Pairwise Master Key)** และ **PTK (Pairwise Transient Key)** ว่ามีความสัมพันธ์กันอย่างไรในการเข้ารหัสเฟรมข้อมูล?
-3. เหตุใดเมื่อเราพิมพ์ Password ผิด (ข้อ 5.4.2) ESP32 จึงยังคงได้รับ Event **`WIFI_EVENT_STA_CONNECTED`** ก่อนที่จะเกิด Event **`WIFI_EVENT_STA_DISCONNECTED`** ตามมาในภายหลัง?
-4. หากเครือข่าย Wi-Fi ไม่มี DHCP Server (ไม่มีการแจก IP อัตโนมัติ) ผลการทดลองในข้อ 5.4.1 จะหยุดอยู่ที่ขั้นตอนใด และจะไม่เกิด Event ใดขึ้น?
-
+   คำตอบ:4-Way Handshake ไม่ส่ง Password โดยตรง แต่ใช้ข้อมูลจากทั้ง Client และ AP เพื่อสร้าง/ตรวจสอบคีย์ ทำให้ยืนยันว่ามีรหัสผ่านที่ถูกต้องโดยไม่เปิดเผยรหัสผ่าน
+3. อธิบายบทบาทและที่มาของคีย์ **PMK (Pairwise Master Key)** และ **PTK (Pairwise Transient Key)** ว่ามีความสัมพันธ์กันอย่างไรในการเข้ารหัสเฟรมข้อมูล?
+   คำตอบ:PMK เป็นคีย์หลักที่ได้จาก Password และข้อมูลเครือข่าย ส่วน PTK ถูกสร้างจาก PMK + Nonce + MAC Address ของทั้งสองฝ่าย แล้วใช้เข้ารหัสข้อมูลระหว่าง ESP32 กับ AP
+5. เหตุใดเมื่อเราพิมพ์ Password ผิด (ข้อ 5.4.2) ESP32 จึงยังคงได้รับ Event **`WIFI_EVENT_STA_CONNECTED`** ก่อนที่จะเกิด Event **`WIFI_EVENT_STA_DISCONNECTED`** ตามมาในภายหลัง?
+   คำตอบ:Password ผิดยังผ่าน Authentication และ Association ได้ก่อน จึงเกิด WIFI_EVENT_STA_CONNECTED แต่เมื่อตรวจสอบคีย์ใน 4-Way Handshake ไม่ผ่าน จึงเกิด WIFI_EVENT_STA_DISCONNECTED ตามมา
+7. หากเครือข่าย Wi-Fi ไม่มี DHCP Server (ไม่มีการแจก IP อัตโนมัติ) ผลการทดลองในข้อ 5.4.1 จะหยุดอยู่ที่ขั้นตอนใด และจะไม่เกิด Event ใดขึ้น?
+   คำตอบ:หากไม่มี DHCP Server จะหยุดหลัง WIFI_EVENT_STA_CONNECTED เพราะยังไม่ได้ IP Address และจะ ไม่เกิด IP_EVENT_STA_GOT_IP
 
 ** command log **
 

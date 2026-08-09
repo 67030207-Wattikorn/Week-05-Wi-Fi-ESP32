@@ -388,10 +388,13 @@ void app_main(void) {
 ## 7. คำถามท้ายการทดลอง (Post-Lab Questions)
 
 1. เหตุใดการระบุ SSID ผิด (ข้อ 5.2.2) จึงส่งผลให้เกิด Disconnect Event ด้วย Reason Code `201` (`WIFI_REASON_NO_AP_FOUND`) ตั้งแต่เฟส Scan?
-2. เหตุใดการพิมพ์ Password ผิด (ข้อ 5.2.3) จึงผ่านเฟส Auth และ Assoc มาได้ แต่มาล้มเหลวในเฟส 4-Way Handshake (Reason Code `15` หรือ `204`)?
-3. ลำดับการเกิด Event ระหว่าง **`WIFI_EVENT_STA_CONNECTED`** กับ **`IP_EVENT_STA_GOT_IP`** Event ใดเกิดขึ้นก่อนกัน และมีความหมายทางกายภาพของ Layer Network ต่างกันอย่างไร?
-4. สมาชิกตัวแปร `reason` ในโครงสร้าง `wifi_event_sta_disconnected_t` มีประโยชน์อย่างไรต่อการออกแบบระบบค้นหาสาเหตุและกู้คืนการเชื่อมต่อ (Auto-Reconnection Mechanism) ในแอปพลิเคชัน IoT?
-
+   คำตอบ:ESP32 Scan แล้วไม่พบ AP ที่ตรงกับ SSID จึง Disconnect ด้วย Reason 201 (NO_AP_FOUND)
+3. เหตุใดการพิมพ์ Password ผิด (ข้อ 5.2.3) จึงผ่านเฟส Auth และ Assoc มาได้ แต่มาล้มเหลวในเฟส 4-Way Handshake (Reason Code `15` หรือ `204`)?
+   คำตอบ:SSID ถูกต้องจึงผ่าน Auth และ Assoc แต่ตรวจสอบรหัสผ่านไม่ผ่านใน 4-Way Handshake จึง Disconnect ด้วย Reason 15/204
+5. ลำดับการเกิด Event ระหว่าง **`WIFI_EVENT_STA_CONNECTED`** กับ **`IP_EVENT_STA_GOT_IP`** Event ใดเกิดขึ้นก่อนกัน และมีความหมายทางกายภาพของ Layer Network ต่างกันอย่างไร?ฃ
+   คำตอบ: 1.STA_CONNECTED = เชื่อมต่อ Wi-Fi กับ AP สำเร็จ (Layer 2) 2.GOT_IP = ได้ IP Address แล้ว (Layer 3)
+7. สมาชิกตัวแปร `reason` ในโครงสร้าง `wifi_event_sta_disconnected_t` มีประโยชน์อย่างไรต่อการออกแบบระบบค้นหาสาเหตุและกู้คืนการเชื่อมต่อ (Auto-Reconnection Mechanism) ในแอปพลิเคชัน IoT?
+   คำตอบ:ใช้ระบุสาเหตุที่ Disconnect เพื่อให้ระบบเลือกวิธีแก้ไขและ Reconnect ได้เหมาะสม เช่น 201 ให้ Scan AP ใหม่ หรือ Password ผิดให้ตรวจสอบรหัสผ่าน
 ** command log **
 
 ```
